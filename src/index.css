@@ -34,6 +34,12 @@
  
     --radius: 0.5rem;
   }
+
+  /* Add initial background color to prevent white flash */
+  html, body {
+    @apply bg-background;
+    min-height: 100vh;
+  }
 }
  
 @layer base {

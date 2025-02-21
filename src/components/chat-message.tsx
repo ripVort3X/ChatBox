@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Bot, User, Copy, Check } from "lucide-react";
-import { cn } from "../lib/utils";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import React, { useState } from 'react';
+import { Bot, User, Copy, Check } from 'lucide-react';
+import { cn } from '../lib/utils';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface ChatMessageProps {
   message: string;
@@ -13,12 +13,7 @@ interface ChatMessageProps {
   id: string;
 }
 
-export function ChatMessage({
-  message,
-  isAi,
-  timestamp,
-  id,
-}: ChatMessageProps) {
+export function ChatMessage({ message, isAi, timestamp, id }: ChatMessageProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -28,7 +23,7 @@ export function ChatMessage({
   };
 
   return (
-    <div
+    <div 
       className={cn(
         "flex gap-3 p-4 rounded-lg group relative",
         isAi ? "bg-card/50" : "bg-blue-500/10"
@@ -49,7 +44,7 @@ export function ChatMessage({
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
           <span className="font-medium text-card-foreground">
-            {isAi ? "ChatBox AI" : "You"}
+            {isAi ? 'ChatBox AI' : 'You'}
           </span>
           <span className="text-sm text-muted-foreground">
             {timestamp.toLocaleTimeString()}
@@ -60,7 +55,7 @@ export function ChatMessage({
             remarkPlugins={[remarkGfm]}
             components={{
               code({ node, inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "");
+                const match = /language-(\w+)/.exec(className || '');
                 return !inline && match ? (
                   <SyntaxHighlighter
                     style={oneDark}
@@ -68,27 +63,17 @@ export function ChatMessage({
                     PreTag="div"
                     {...props}
                   >
-                    {String(children).replace(/\n$/, "")}
+                    {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>
                 ) : (
-                  <code
-                    className={cn(
-                      "bg-muted px-1.5 py-0.5 rounded-md",
-                      className
-                    )}
-                    {...props}
-                  >
+                  <code className={cn("bg-muted px-1.5 py-0.5 rounded-md", className)} {...props}>
                     {children}
                   </code>
                 );
               },
               p({ children }) {
-                return (
-                  <p className="mb-2 last:mb-0 whitespace-pre-wrap">
-                    {children}
-                  </p>
-                );
-              },
+                return <p className="mb-2 last:mb-0 whitespace-pre-wrap">{children}</p>;
+              }
             }}
           >
             {message}
@@ -104,7 +89,7 @@ export function ChatMessage({
             ) : (
               <Copy className="w-4 h-4" />
             )}
-            <span>{copied ? "Copied!" : "Copy"}</span>
+            <span>{copied ? 'Copied!' : 'Copy'}</span>
           </button>
         </div>
       </div>

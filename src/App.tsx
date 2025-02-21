@@ -5,6 +5,7 @@ import { AuthForm } from './components/auth-form';
 import { Loader } from './components/loader';
 import { HomePage } from './components/home-page';
 import { ChatPage } from './components/chat-page';
+import { EmailPage } from './components/email-page';
 import { useState, useEffect } from 'react';
 
 type Feature = 'chat' | 'email' | 'resume' | 'todo' | 'home';
@@ -62,10 +63,7 @@ function App() {
           <ChatPage />
         )}
         {currentFeature === 'email' && (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-card-foreground mb-4">Email & Docs Summarizer</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
+          <EmailPage />
         )}
         {currentFeature === 'resume' && (
           <div className="text-center py-12">
