@@ -64,11 +64,19 @@ const initializeChat = (language: Language = 'en') => {
     history: [
       {
         role: "user",
+<<<<<<< HEAD
         parts: SYSTEM_PROMPTS[language],
       },
       {
         role: "model",
         parts: "Understood. I am ChatBox AI, and I will communicate in the specified language while maintaining a helpful and professional tone.",
+=======
+        parts: `${SYSTEM_PROMPTS[language]} Additionally, regardless of the language in which users write to you, ALWAYS respond in ${SUPPORTED_LANGUAGES[language]}. If the user's message is in a different language, first understand it, then formulate your response in ${SUPPORTED_LANGUAGES[language]}.`,
+      },
+      {
+        role: "model",
+        parts: `Understood. I am ChatBox AI, and I will always communicate in ${SUPPORTED_LANGUAGES[language]}, regardless of the input language.`,
+>>>>>>> 8b535ae (Update 3)
       },
     ],
     generationConfig: {

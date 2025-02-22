@@ -1,0 +1,3 @@
+give this prompt to bolt
+
+let's adjust some UI bugs like the button of New chat's text is not centered and when editing the chat's name the cross button (cancel button) get's half hidden
